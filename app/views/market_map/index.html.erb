@@ -1,0 +1,14 @@
+<div class="sidebar">
+	<h3>Market Map Prototype</h3>
+	<div id="inner-details"></div>
+	<div id="log"></div>
+</div>
+
+<div class="content">
+	<div id="nodes"></div>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+	var json = <%= render :partial => 'company', :object => @company, :locals => {:depth => 4} %>
+</script>

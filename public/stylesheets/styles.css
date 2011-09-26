@@ -1,0 +1,11 @@
+.content {
+	background-color: #111;
+}
+
+#nodes {	
+	position:relative;
+	width:100%;
+	height:800px;
+	margin:auto;
+	overflow:hidden;
+}

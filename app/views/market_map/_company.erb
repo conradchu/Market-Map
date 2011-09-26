@@ -1,0 +1,20 @@
+<%- if depth > 0 -%>
+{
+	id: '<%= company.id -%> : <%= depth -%>',
+	name: '<%= escape_javascript(company.name) -%>',
+	data: {
+		relation: "<h4><%= escape_javascript(company.name) -%><b>Connections:</b><%- if depth > 1 && company.relationships.length > 0 -%><ul><%- company.relationships.each do |r| -%><% if r.related_company %><li><%= escape_javascript(r.related_company.name) %></li><% end %><% end %></ul><% end %></h4>"
+	},
+	<%- if depth > 1 && company.relationships.length > 0 -%>
+	children: [
+		<%- company.relationships.each do |r| -%>
+			<%- if r.related_company -%>
+			<%= render :partial => 'company', :locals => {:company => r.related_company, :depth => depth - 1} -%>,
+			<%- end -%>
+		<%- end -%>	
+	]	
+	<%- else -%>
+	children: []
+	<%- end -%>		
+}
+<%- end -%>
